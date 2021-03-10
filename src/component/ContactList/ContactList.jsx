@@ -14,17 +14,7 @@ import contactsActions from "../../redux/contacts/contacts-actions";
 const ContactList = ({ contacts, deleteContact, clearFilter }) => {
   return (
     <div>
-      {/*
-        <CSSTransition
-          in={contacts.length > 1 }
-          timeout={250}
-          classNames={filterFade}
-          unmountOnExit
-          onExiting={() => clearFilter()}
-        >
-          <Filter />
-        </CSSTransition>
-     */ }
+      
       <h2 className={style.title}>Contacts</h2>
       <TransitionGroup component="ul" className={style.contactList}>
         {contacts.map(({ id, name, number }) => (

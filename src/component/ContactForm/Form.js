@@ -93,7 +93,7 @@ class ContactForm extends Component {
             </button>
           </form>
         </div>
-        {<CSSTransition
+        <CSSTransition
           in={this.props.contacts.length > 1}
           timeout={250}
           classNames={filterFade}
@@ -101,7 +101,7 @@ class ContactForm extends Component {
           onExiting={() => this.props.clearFilter()}
         >
           <Filter />
-        </CSSTransition>}
+        </CSSTransition>
       </div>
     )
   }

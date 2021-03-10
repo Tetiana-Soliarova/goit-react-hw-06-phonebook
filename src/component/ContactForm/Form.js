@@ -14,6 +14,7 @@ class ContactForm extends Component {
     name: '',
     number: '',
     error: false,
+    
   }
 
   //метод который обновляет состояние
@@ -49,6 +50,8 @@ class ContactForm extends Component {
   reset = () => {
     this.setState({ name: '', number: '' })
   }
+
+
 
   render() {
     return (
@@ -90,14 +93,15 @@ class ContactForm extends Component {
             </button>
           </form>
         </div>
-        <CSSTransition
+        {<CSSTransition
           in={this.props.contacts.length > 1}
           timeout={250}
           classNames={filterFade}
           unmountOnExit
+          onExiting={() => this.props.clearFilter()}
         >
           <Filter />
-        </CSSTransition>
+        </CSSTransition>}
       </div>
     )
   }
@@ -110,6 +114,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   onSubmit: (name, number) =>
     dispatch(contactsActions.addContact(name, number)),
+  clearFilter: () => dispatch(contactsActions.changeFilter("")),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactForm)

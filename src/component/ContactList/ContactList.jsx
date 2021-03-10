@@ -7,10 +7,24 @@ import popTransition from "./pop.module.css";
 import style from "./contactStyles.module.css";
 import contactsActions from "../../redux/contacts/contacts-actions";
 
+//import Filter from "../Filter/Filter";
+//import filterFade from "../../FilterFade.module.css";
 
-const ContactList = ({ contacts, deleteContact }) => {
+
+const ContactList = ({ contacts, deleteContact, clearFilter }) => {
   return (
     <div>
+      {/*
+        <CSSTransition
+          in={contacts.length > 1 }
+          timeout={250}
+          classNames={filterFade}
+          unmountOnExit
+          onExiting={() => clearFilter()}
+        >
+          <Filter />
+        </CSSTransition>
+     */ }
       <h2 className={style.title}>Contacts</h2>
       <TransitionGroup component="ul" className={style.contactList}>
         {contacts.map(({ id, name, number }) => (
@@ -50,11 +64,12 @@ const getVisibleTodos = (allContact, filter) => {
 
 const mapStateToProps = ({ contacts: { items, filter } }) => {
   return {
-    contacts: getVisibleTodos(items, filter),
+    contacts: getVisibleTodos(items, filter ),
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
   deleteContact: (id) => dispatch(contactsActions.deleteTodo(id)),
+  //clearFilter: () => dispatch(contactsActions.changeFilter("")),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(ContactList);

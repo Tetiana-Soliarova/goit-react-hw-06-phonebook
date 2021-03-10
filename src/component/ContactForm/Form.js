@@ -1,12 +1,12 @@
-import { Component } from 'react'
-import styles from './form.module.css'
-import contactsActions from '../../redux/contacts/contacts-actions'
-import { connect } from 'react-redux'
+import { Component } from 'react';
+import styles from './form.module.css';
+import contactsActions from '../../redux/contacts/contacts-actions';
+import { connect } from 'react-redux';
 
-import Alert from '../Alert/alert'
-import { CSSTransition } from 'react-transition-group'
-import fade from './Fade.module.css'
-import Filter from '../Filter/Filter'
+import Alert from '../Alert/alert';
+import { CSSTransition } from 'react-transition-group';
+import fade from './Fade.module.css';
+import Filter from '../Filter/Filter';
 import filterFade from '../../FilterFade.module.css'
 
 class ContactForm extends Component {
